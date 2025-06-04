@@ -11,7 +11,8 @@ Open three terminal windows:
 | Terminal | Purpose                       | Quick Reference (see below for more) |
 | -------- | ----------------------------- | ------------------------------------ |
 | 1        | To run the `webapp`           | `npm run dev`                        |
-| 2        | To run the `websocket-server` | `npm run dev`                        |
+| 2        | To run the `websocket-server` (Node) | `npm run dev`                        |
+| 2b       | To run the `go-server`        | `go run ./go-server` |
 | 3        | To run `ngrok`                | `ngrok http 8081`                    |
 
 Make sure all vars in `webapp/.env` and `websocket-server/.env` are set correctly. See [full setup](#full-setup) section for more.
@@ -23,6 +24,7 @@ This repo implements a phone calling assistant with the Realtime API and Twilio,
 1. `webapp`: NextJS app to serve as a frontend for call configuration and transcripts
 2. `websocket-server`: Express backend that handles connection from Twilio, connects it to the Realtime API, and forwards messages to the frontend
 <img width="1514" alt="Screenshot 2024-12-20 at 10 32 40 AM" src="https://github.com/user-attachments/assets/61d39b88-4861-4b6f-bfe2-796957ab5476" />
+3. `go-server`: Go backend optimized for high concurrency
 
 Twilio uses TwiML (a form of XML) to specify how to handle a phone call. When a call comes in we tell Twilio to start a bi-directional stream to our backend, where we forward messages between the call and the Realtime API. (`{{WS_URL}}` is replaced with our websocket endpoint.)
 
